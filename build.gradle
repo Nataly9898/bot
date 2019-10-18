@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.cfif11.spsuace'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.telegram', name: 'telegrambots', version: '4.4.0.1'
+}
