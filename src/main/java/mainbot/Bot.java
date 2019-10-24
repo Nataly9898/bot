@@ -1,4 +1,5 @@
-package Mainbot;
+package mainbot;
+
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -26,7 +27,7 @@ public class Bot extends TelegramLongPollingBot {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
 
         try {
-            DefaultBotOptions botOptions= ApiContext.getInstance(DefaultBotOptions.class);
+            DefaultBotOptions botOptions = ApiContext.getInstance(DefaultBotOptions.class);
             botOptions.setProxyHost("129.146.181.251");
             botOptions.setProxyPort(3128);
             botOptions.setProxyType(DefaultBotOptions.ProxyType.HTTP);
@@ -35,7 +36,6 @@ public class Bot extends TelegramLongPollingBot {
             e.printStackTrace();
         }
     }
-
 
 
     @Override
@@ -64,20 +64,19 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-    public void setButtons(SendMessage sendMessage){
-    ReplyKeyboardMarkup replyKeyboardMarkup= new ReplyKeyboardMarkup();
-    sendMessage.setReplyMarkup(replyKeyboardMarkup);
-    replyKeyboardMarkup.setSelective(true);
-    replyKeyboardMarkup.setResizeKeyboard(true);
-    replyKeyboardMarkup.setOneTimeKeyboard(false);
+    public void setButtons(SendMessage sendMessage) {
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        replyKeyboardMarkup.setSelective(true);
+        replyKeyboardMarkup.setResizeKeyboard(true);
+        replyKeyboardMarkup.setOneTimeKeyboard(false);
 
-    List<KeyboardRow> keyboardRowList = new ArrayList<>();
-    KeyboardRow keyboardFirstRow = new KeyboardRow();
-    keyboardFirstRow.add(new KeyboardButton("/help"));
-    keyboardFirstRow.add(new KeyboardButton("/setting"));
-
-    keyboardRowList.add(keyboardFirstRow);
-    replyKeyboardMarkup.setKeyboard(keyboardRowList);
+        List<KeyboardRow> keyboardRowList = new ArrayList<>();
+        KeyboardRow keyboardFirstRow = new KeyboardRow();
+        keyboardFirstRow.add(new KeyboardButton("/help"));
+        keyboardFirstRow.add(new KeyboardButton("/setting"));
+        keyboardRowList.add(keyboardFirstRow);
+        replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
 
     public String getBotUsername() {
@@ -90,3 +89,4 @@ public class Bot extends TelegramLongPollingBot {
     }
 
 }
+
