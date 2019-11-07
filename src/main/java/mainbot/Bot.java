@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bot extends TelegramLongPollingBot {
-
+    private static final String BOT_USERNAME = "ReminderNatalyBot";
+    private static final String BOT_TOKEN = "912187838:AAE4zu7BAEKA1vrtUyb8dwEoKLA16hdI830";
     public Bot(DefaultBotOptions botOptions) {
         super(botOptions);
     }
@@ -79,13 +80,19 @@ public class Bot extends TelegramLongPollingBot {
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
 
-    public String getBotUsername() {
-        return "MessageNatBot";
-    }
+   // public String getBotUsername() {
+   //     return "ReminderNatalyBot";
+  //  }
 
 
+   // String TOKEN=System.getenv("ReminderNatalyBot");
+   @Override
+   public String getBotUsername() {
+       return BOT_USERNAME;
+   }
+    @Override
     public String getBotToken() {
-        return "912187838:AAE4zu7BAEKA1vrtUyb8dwEoKLA16hdI830";
+        return BOT_TOKEN;
     }
 
 }
