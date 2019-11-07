@@ -25,6 +25,8 @@ public class Bot extends AbilityBot {
                 .input(0)
                 .locality(Locality.ALL)
                 .privacy(Privacy.PUBLIC)
+                .action(ctx-> silent.send("Hello World!", ctx.chatId()))
+                .post(ctx-> silent.send("Bye world!", ctx.chatId()))
                 .build();
 }
 
