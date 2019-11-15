@@ -1,5 +1,6 @@
 
 package mainbot;
+
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -23,6 +24,10 @@ public class Bot extends TelegramLongPollingBot{
         super(botOptions);
     }
 
+  //  public int creatorId() {
+   //     return 98;
+  //  }
+
     public static void main(String[] args) {
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
@@ -36,8 +41,12 @@ public class Bot extends TelegramLongPollingBot{
             e.printStackTrace();
         }
     }
-    @Override
 
+
+
+
+
+    @Override
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
