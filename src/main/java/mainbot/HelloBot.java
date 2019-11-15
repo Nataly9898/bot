@@ -5,7 +5,8 @@ package mainbot;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.abilitybots.api.objects.Ability;
 
-import static org.telegram.abilitybots.api.objects.Locality.ALL;
+
+import static org.telegram.abilitybots.api.objects.Locality.USER;
 import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
 
 
@@ -28,9 +29,10 @@ public class HelloBot extends AbilityBot{
                 .name("hello")
                 .info("Says hello world!")
                 .privacy(PUBLIC)
-                .locality(ALL)
-                .input(0)
-                .action(ctx->silent.send("Hello World",ctx.chatId()))
+                .locality(USER)
+                .input(1)
+                .action(ctx->silent.send("Hi, I'm a bot that will help you not to forget about important events",ctx.chatId()))
+                .post(ctx -> silent.send("Bay", ctx.chatId()))
                 .build();
     }
 
