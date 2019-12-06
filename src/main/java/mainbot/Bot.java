@@ -48,27 +48,38 @@ public class Bot extends TelegramLongPollingBot{
 
     @Override
     public void onUpdateReceived(Update update) {
-        Message message = update.getMessage();
-        if (message != null && message.hasText()) {
-            if (message.getText().equals("/help")) {
-                sendMessage(message, "Hello");
-            } else
-                sendMessage(message, "Hello world");
-        }
-    }
-    private void sendMessage(Message message, String args) {
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.enableMarkdown(true);
-        sendMessage.setChatId(message.getChatId().toString());
-        sendMessage.setReplyToMessageId(message.getMessageId());
-        sendMessage.setText("Hello");
         try {
-            setButtons(sendMessage);
-            execute(sendMessage);
+            //проверяем есть ли сообщение и текстовое ли оно
+            if (update.hasMessage() && update.getMessage().hasText()) {
+                //Извлекаем объект входящего сообщения
+                Message inMessage = update.getMessage();
+                //Создаем исходящее сообщение
+                SendMessage outMessage = new SendMessage();
+                //Указываем в какой чат будем отправлять сообщение
+                //(в тот же чат, откуда пришло входящее сообщение)
+                outMessage.setChatId(inMessage.getChatId());
+                //Указываем текст сообщения
+                outMessage.setText(inMessage.getText());
+                //Отправляем сообщение
+                execute(outMessage);
+            }
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
     }
+    //private void sendMessage(Message message, String args) {
+       // SendMessage sendMessage = new SendMessage();
+      //  sendMessage.enableMarkdown(true);
+      //  sendMessage.setChatId(message.getChatId().toString());
+      //  sendMessage.setReplyToMessageId(message.getMessageId());
+      //  sendMessage.setText("Hello");
+      //  try {
+      //      setButtons(sendMessage);
+       //     execute(sendMessage);
+      //  } catch (TelegramApiException e) {
+       //     e.printStackTrace();
+       // }
+   // }
 
     public void setButtons(SendMessage sendMessage) {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
