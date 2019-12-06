@@ -81,19 +81,19 @@ public class Bot extends TelegramLongPollingBot{
        // }
    // }
 
-    public void setButtons(SendMessage sendMessage) {
-        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-        sendMessage.setReplyMarkup(replyKeyboardMarkup);
-        replyKeyboardMarkup.setSelective(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
-        List<KeyboardRow> keyboardRowList = new ArrayList<>();
-        KeyboardRow keyboardFirstRow = new KeyboardRow();
-        keyboardFirstRow.add(new KeyboardButton("/help"));
-        keyboardFirstRow.add(new KeyboardButton("/setting"));
-        keyboardRowList.add(keyboardFirstRow);
-        replyKeyboardMarkup.setKeyboard(keyboardRowList);
-    }
+   // public void setButtons(SendMessage sendMessage) {
+      //  ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+     //   sendMessage.setReplyMarkup(replyKeyboardMarkup);
+     //   replyKeyboardMarkup.setSelective(true);
+     //   replyKeyboardMarkup.setResizeKeyboard(true);
+      //  replyKeyboardMarkup.setOneTimeKeyboard(false);
+      //  List<KeyboardRow> keyboardRowList = new ArrayList<>();
+      //  KeyboardRow keyboardFirstRow = new KeyboardRow();
+      //  keyboardFirstRow.add(new KeyboardButton("/help"));
+       // keyboardFirstRow.add(new KeyboardButton("/setting"));
+      //  keyboardRowList.add(keyboardFirstRow);
+      //  replyKeyboardMarkup.setKeyboard(keyboardRowList);
+   // }
 
     @Override
     public String getBotUsername() {
