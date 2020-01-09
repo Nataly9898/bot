@@ -31,7 +31,7 @@ import static logic.commands.SingleNotificationBotCommand.internalError;
 
 public class Bot extends TelegramLongPollingCommandBot {
 
-    private static final String TOKEN = "912187838:AAE4zu7BAEKA1vrtUyb8dwEoKLA16hdI830";//System.getenv("ReminderNatalyBot");
+    private static final String TOKEN = System.getenv("ReminderNatalyBot");
     final static Logger logger = Logger.getLogger(Bot.class.getName());
     private List<BotCommand> commands=new ArrayList<>();
 
