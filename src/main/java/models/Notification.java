@@ -1,33 +1,21 @@
 package models;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@DatabaseTable(tableName = "Notifications")
 public class Notification {
 
-    @DatabaseField(generatedId = true)
-    private Long id;
-
-    @DatabaseField
     private String name;
-
-    @DatabaseField(columnName = "Chat_Id")
     private Long chatId;
-
-
-    @DatabaseField(columnName = "Notification")
     private String notification;
-
-    @DatabaseField(columnName = "Date_time")
     private Long millisecondsFromEpoch;
+    private String status;
 
     public String getStatus() {
         return status;
@@ -36,9 +24,6 @@ public class Notification {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    @DatabaseField(columnName = "Status")
-    private String status;
 
     public String getName() {
         return name;
@@ -133,7 +118,17 @@ public class Notification {
     }
 
 
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Notification that = (Notification) o;
+        return name.equals(that.name) &&
+                chatId.equals(that.chatId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, chatId);
     }
 }
