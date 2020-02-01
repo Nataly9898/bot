@@ -5,6 +5,7 @@ import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 
+import java.util.Set;
 import java.util.logging.Logger;
 
 import static models.Notification.checkNameCorrectness;
@@ -18,8 +19,8 @@ public class CreateNotificationBotCommand extends BaseBotCommand {
         logger = Logger.getLogger(CreateNotificationBotCommand.class.getName());
     }
 
-    public CreateNotificationBotCommand() {
-        super("/createnotification", "Use this command to create notification");
+    public CreateNotificationBotCommand(Set<Notification> notifications) {
+        super("/createnotification", "Use this command to create notification", notifications);
     }
 
     @Override

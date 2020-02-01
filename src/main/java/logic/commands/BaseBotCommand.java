@@ -22,11 +22,19 @@ public abstract class BaseBotCommand extends BotCommand {
     public static final String internalError = "Internal error";
     protected static Set<Notification> notifications = new HashSet<>();
 
+    public BaseBotCommand(String commandIdentifier,
+                          String description,
+                          Set<Notification> notifications) {
+        super(commandIdentifier, description);
+        this.notifications=notifications;
+    }
+
     public BaseBotCommand(String commandIdentifier, String description) {
         super(commandIdentifier, description);
     }
-
     static Logger logger = Logger.getLogger(BaseBotCommand.class.getName());
+
+
 
     public static void processError(AbsSender absSender, Long chatId, String message) {
         try {

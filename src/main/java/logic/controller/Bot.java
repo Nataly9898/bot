@@ -4,6 +4,7 @@ import logic.commands.ChangeNotificationBotCommand;
 import logic.commands.CreateNotificationBotCommand;
 import logic.commands.DeleteNotificationCommand;
 import logic.commands.ListNotificationsBotCommand;
+import models.Notification;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
@@ -11,9 +12,12 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 import static logic.commands.BaseBotCommand.sendMessageSequentially;
 
@@ -31,10 +35,12 @@ public class Bot extends TelegramLongPollingCommandBot {
     public Bot(DefaultBotOptions botOptions) {
         super(botOptions, "ReminderNatalyBot");
 
-        CreateNotificationBotCommand createNotificationBotCommand = new CreateNotificationBotCommand();
-        ListNotificationsBotCommand listNotificationsBotCommand = new ListNotificationsBotCommand();
-        DeleteNotificationCommand deleteNotificationCommand = new DeleteNotificationCommand();
-        ChangeNotificationBotCommand changeNotificationBotCommand = new ChangeNotificationBotCommand();
+        Set<Notification> notifications= new HashSet<>();
+
+        CreateNotificationBotCommand createNotificationBotCommand = new CreateNotificationBotCommand(notifications);
+        ListNotificationsBotCommand listNotificationsBotCommand = new ListNotificationsBotCommand(notifications);
+        DeleteNotificationCommand deleteNotificationCommand = new DeleteNotificationCommand(notifications);
+        ChangeNotificationBotCommand changeNotificationBotCommand = new ChangeNotificationBotCommand(notifications);
 
         commands.add(createNotificationBotCommand);
         commands.add(listNotificationsBotCommand);

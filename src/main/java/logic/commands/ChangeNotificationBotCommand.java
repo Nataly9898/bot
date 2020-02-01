@@ -5,6 +5,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,9 +19,9 @@ public class ChangeNotificationBotCommand extends SingleNotificationBotCommand {
         logger = Logger.getLogger(ChangeNotificationBotCommand.class.getName());
     }
 
-    public ChangeNotificationBotCommand() {
+    public ChangeNotificationBotCommand(Set<Notification> notifications) {
         super("changenotification",
-                "Use this command to get notification by name as /changenotification <name> <dd.mm.yyyy hh:mm (future time)>  <text>");
+                "Use this command to get notification by name as /changenotification <name> <dd.mm.yyyy hh:mm (future time)>  <text>", notifications);
     }
 
     @Override

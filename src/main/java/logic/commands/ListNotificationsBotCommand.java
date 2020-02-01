@@ -22,9 +22,9 @@ public class ListNotificationsBotCommand extends BaseBotCommand {
         logger = Logger.getLogger(ListNotificationsBotCommand.class.getName());
     }
 
-    public ListNotificationsBotCommand() {
+    public ListNotificationsBotCommand(Set<Notification> notifications) {
         super("listnotifications",
-                "Use this command to list notifications as /listnotifications -a or /listnotifications -e");
+                "Use this command to list notifications as /listnotifications -a or /listnotifications -e",notifications);
     }
 
 

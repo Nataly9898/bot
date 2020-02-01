@@ -3,6 +3,7 @@ package logic.commands;
 import models.Notification;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 
+import java.util.Set;
 import java.util.logging.Logger;
 
 public class DeleteNotificationCommand extends SingleNotificationBotCommand {
@@ -14,9 +15,9 @@ public class DeleteNotificationCommand extends SingleNotificationBotCommand {
         logger = Logger.getLogger(ChangeNotificationBotCommand.class.getName());
     }
 
-    public DeleteNotificationCommand() {
+    public DeleteNotificationCommand(Set<Notification> notifications) {
         super("deletenotification",
-                "Use this command to get notification by name as /deletenotification <name>");
+                "Use this command to get notification by name as /deletenotification <name>",notifications);
     }
 
     @Override
